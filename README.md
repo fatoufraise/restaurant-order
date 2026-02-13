@@ -1,5 +1,5 @@
 # restaurant-order
--->  Système de Commande de Restaurant en Ligne
+Système de Commande de Restaurant en Ligne
 
 Un système complet de commande en ligne pour restaurant avec backend Java Spring Boot et frontend HTML/CSS/JavaScript.
 
@@ -46,7 +46,7 @@ cd restaurant-order-system
 
 # Ou téléchargez et extrayez le ZIP
 
-### 2. Compiler le backend
+# Compiler le backend
 
 
 cd backend
