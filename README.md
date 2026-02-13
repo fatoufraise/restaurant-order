@@ -37,8 +37,7 @@ Un système complet de commande en ligne pour restaurant avec backend Java Sprin
 - Git(optionnel)
 
 #  Installation
-
- 1) Cloner ou télécharger le projet
+Cloner ou télécharger le projet
 
 # Si vous avez git
 git clone <url-du-repo>
