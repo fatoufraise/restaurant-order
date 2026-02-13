@@ -70,10 +70,6 @@ mvn spring-boot:run
 cd backend
 java -jar target/order-system-1.0.0.jar
 
-
-Le backend démarrera sur : http://localhost:8080
-
-
 # Démarrer le Frontend
 
 - Option 1 : Avec un serveur HTTP simple (Python)
