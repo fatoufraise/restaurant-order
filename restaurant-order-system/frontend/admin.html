@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Gestion des Commandes</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                <h2>Admin Panel</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" onclick="showSection('orders')">
+                    <i class="fas fa-clipboard-list"></i> Commandes
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('menu')">
+                    <i class="fas fa-pizza-slice"></i> Menu
+                </a>
+                <a href="#" class="nav-item" onclick="showSection('stats')">
+                    <i class="fas fa-chart-bar"></i> Statistiques
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h1 id="sectionTitle">Gestion des Commandes</h1>
+                <div class="top-bar-actions">
+                    <button class="refresh-btn" onclick="refreshData()">
+                        <i class="fas fa-sync-alt"></i> Actualiser
+                    </button>
+                    <span class="live-indicator">
+                        <i class="fas fa-circle"></i> En direct
+                    </span>
+                </div>
+            </header>
+
+            <!-- Section Commandes -->
+            <section id="ordersSection" class="content-section active">
+                <div class="filter-tabs">
+                    <button class="tab-btn active" onclick="filterOrders('ALL')">
+                        Toutes <span class="badge" id="allCount">0</span>
+                    </button>
+                    <button class="tab-btn" onclick="filterOrders('PENDING')">
+                        En attente <span class="badge pending" id="pendingCount">0</span>
+                    </button>
+                    <button class="tab-btn" onclick="filterOrders('CONFIRMED')">
+                        Confirmées <span class="badge confirmed" id="confirmedCount">0</span>
+                    </button>
+                    <button class="tab-btn" onclick="filterOrders('PREPARING')">
+                        En préparation <span class="badge preparing" id="preparingCount">0</span>
+                    </button>
+                    <button class="tab-btn" onclick="filterOrders('READY')">
+                        Prêtes <span class="badge ready" id="readyCount">0</span>
+                    </button>
+                </div>
+
+                <div class="orders-grid" id="ordersGrid">
+                    <!-- Les commandes seront chargées ici -->
+                </div>
+            </section>
+
+            <!-- Section Menu -->
+            <section id="menuSection" class="content-section">
+                <div class="section-header">
+                    <button class="btn-primary" onclick="showAddItemModal()">
+                        <i class="fas fa-plus"></i> Ajouter un article
+                    </button>
+                </div>
+                <div class="menu-table" id="menuTable">
+                    <!-- La table du menu sera chargée ici -->
+                </div>
+            </section>
+
+            <!-- Section Statistiques -->
+            <section id="statsSection" class="content-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-shopping-cart"></i>
+                        <div>
+                            <h3 id="totalOrders">0</h3>
+                            <p>Total Commandes</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-euro-sign"></i>
+                        <div>
+                            <h3 id="totalRevenue">0.00 €</h3>
+                            <p>Chiffre d'affaires</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3 id="pendingOrders">0</h3>
+                            <p>En attente</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h3 id="completedOrders">0</h3>
+                            <p>Complétées</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal Détails Commande -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Commande #<span id="modalOrderId"></span></h3>
+                <button class="close-modal" onclick="closeOrderModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="orderDetails">
+                <!-- Détails de la commande -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
